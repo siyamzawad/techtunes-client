@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import React from "react";
-import Header from "../components/header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -51,7 +49,6 @@ function CreateBlog() {
 
   return (
     <>
-      <Header />
       <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
         <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-6 md:p-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-6">
@@ -81,7 +78,7 @@ function CreateBlog() {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none"
               >
                 <option value="">-- Choose a category --</option>
                 {categories.map((cat) => (
@@ -100,7 +97,7 @@ function CreateBlog() {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 rows="6"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 focus:outline-none"
                 placeholder="Share your thoughts..."
               />
             </div>

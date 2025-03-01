@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import Header from "../components/header";
 
 const Register = () => {
   const auth = useAuth();
@@ -50,7 +49,7 @@ const Register = () => {
                 type="email"
                 placeholder="Enter your email"
                 {...register("email", { required: "Email is required" })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">
@@ -66,7 +65,7 @@ const Register = () => {
                 type="text"
                 placeholder="Enter your username"
                 {...register("username", { required: "Username is required" })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
               {errors.username && (
                 <p className="text-red-500 text-xs mt-1">
@@ -84,7 +83,7 @@ const Register = () => {
                 type="password"
                 placeholder="Create a password"
                 {...register("password", { required: "Password is required" })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
               {errors.password && (
                 <p className="text-red-500 text-xs mt-1">
@@ -96,7 +95,7 @@ const Register = () => {
             {/* Register Button */}
             <button
               type="submit"
-              className="w-full bg-[#F2761E] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300"
               disabled={loading}
             >
               {loading ? "Registering..." : "Register"}
@@ -109,7 +108,7 @@ const Register = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-blue-600 font-medium hover:underline"
+                className="text-orange-500 font-medium hover:underline"
               >
                 Log in here
               </Link>

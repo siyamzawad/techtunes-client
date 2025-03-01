@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import BlogsByCategoryCard from "./BlogsByCategoryCard";
@@ -11,7 +11,7 @@ const BlogsByCategory = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/blogs/${category}`)
+      .get(`http://localhost:5000/blogs/category/${category}`)
       .then((response) => {
         setBlogs(response.data);
         setLoading(false);
