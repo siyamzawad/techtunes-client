@@ -17,9 +17,12 @@ const Login = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await axios.post("/api/login", data);
-      auth.login(response.data.user);
-      navigate("/dashboard");
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        data
+      );
+      auth.login(response?.data?.user);
+      navigate("/", { replace: true });
     } catch (error) {
       console.error(
         "Login failed:",

@@ -17,9 +17,12 @@ const Register = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await axios.post("/api/register", data);
-      auth.login(response.data.user);
-      navigate("/dashboard");
+      const response = await axios.post(
+        "http://localhost:5000/user/signup",
+        data
+      );
+      auth.login(response?.data?.user);
+      navigate("/");
     } catch (error) {
       console.error(
         "Registration failed:",
