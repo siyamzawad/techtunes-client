@@ -13,9 +13,25 @@ export const getCategories = async (req, res) => {
   }
 };
 
-// @desc    Create a new category
-// @route   POST /api/categories
-// @access  Public
+export const getSingleCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    // Find category by slug or ID
+    const categoryData = await Category.findOne({
+      $or: [{ _id: category }, { slug: category }],
+    });
+
+    if (!categoryData) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.json(categoryData);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
 export const createCategory = async (req, res) => {
   try {
     const { name, description, image } = req.body;

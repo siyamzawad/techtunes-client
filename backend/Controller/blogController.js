@@ -23,12 +23,21 @@ export const getAllBlogs = async (req, res) => {
   }
 };
 
+import mongoose from "mongoose";
+
 export const getBlog = async (req, res) => {
   try {
+    // Validate ObjectId
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid Blog ID" });
+    }
+
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
+
     res.json(blog);
   } catch (err) {
+    console.error("Error fetching blog:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -42,7 +51,29 @@ export const getBlogsByCategory = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch category posts" });
   }
 };
+export const updateBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, body, category } = req.body;
 
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      id,
+      { title, body, category },
+      { new: true, runValidators: true } // Return updated document & apply schema validation
+    );
+
+    if (!updatedBlog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Blog updated successfully", blog: updatedBlog });
+  } catch (error) {
+    console.error("Error updating blog:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 export const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findByIdAndDelete(req.params.id);
