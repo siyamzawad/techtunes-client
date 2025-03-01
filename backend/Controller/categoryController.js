@@ -1,15 +1,11 @@
-// @desc    Get all categories
-// @route   GET /api/categories
-
 import Category from "../Model/category.js";
 
-// @access  Public
 export const getCategories = async (req, res) => {
   try {
     const categories = await Category.find();
     res.json(categories);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch categories" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -45,13 +41,10 @@ export const createCategory = async (req, res) => {
 
     res.status(201).json(category);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create category" });
+    res.status(500).json({ error: error.message });
   }
 };
 
-// @desc    Delete a category
-// @route   DELETE /api/categories/:id
-// @access  Public
 export const deleteCategory = async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
@@ -60,6 +53,6 @@ export const deleteCategory = async (req, res) => {
     await category.deleteOne();
     res.json({ message: "Category deleted" });
   } catch (error) {
-    res.status(500).json({ error: "Failed to delete category" });
+    res.status(500).json({ error: error.message });
   }
 };

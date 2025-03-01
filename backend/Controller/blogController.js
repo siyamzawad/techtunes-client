@@ -10,7 +10,7 @@ export const createBlog = async (req, res) => {
     await newBlog.save();
     res.status(201).json(newBlog);
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -19,7 +19,7 @@ export const getAllBlogs = async (req, res) => {
     const posts = await Blog.find().sort({ createdAt: -1 });
     res.json(posts);
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -48,7 +48,7 @@ export const getBlogsByCategory = async (req, res) => {
     const blogs = await Blog.find({ category: category });
     res.json(blogs);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch category posts" });
+    res.status(500).json({ error: err.message });
   }
 };
 export const updateBlog = async (req, res) => {
@@ -80,6 +80,6 @@ export const deleteBlog = async (req, res) => {
     if (!blog) return res.status(404).json({ message: "Post not found" });
     res.json({ message: "Blog deleted successfully" });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: err.message });
   }
 };
