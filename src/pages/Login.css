@@ -1,0 +1,105 @@
+* {
+  overflow: auto;
+}
+
+.loginPage {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5;
+  font-weight: 400;
+  align-items: center;
+  color-scheme: light dark;
+  color: hsla(0, 0%, 0%, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  place-items: top;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+header.logPage {
+  margin-top: 2.5em;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin: 0px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.btn,
+.inactBtn {
+  width: 15em;
+  padding: 0.75em 0;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover,
+.inactBtn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active,
+.inactBtn:active {
+  transform: translateY(1px);
+}
+
+.textbox {
+  color: black;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MuiInputLabel-root {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.MuiOutlinedInput-root {
+  background-color: white;
+}
+
+.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+  border-color: #f44336;
+}
+
+.MuiFormHelperText-root.Mui-error {
+  color: #f44336;
+}
+
+@media only screen and (max-width: 400px) {
+  .loginPage {
+    overflow: visible;
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn,
+  .inactBtn {
+    font-size: 0.9rem;
+    padding: 0.6rem 0;
+  }
+
+  .textbox {
+    max-width: 100%;
+  }
+}
