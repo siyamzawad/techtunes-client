@@ -7,7 +7,6 @@ import {
   getBlogsByCategory,
   updateBlog,
 } from "../Controller/blogController.js";
-//import checkToken from "../middlewares/checkToken.js";
 
 const blogRouter = express.Router();
 
@@ -21,10 +20,6 @@ blogRouter.put("/:id", updateBlog);
 
 blogRouter.post("/", createBlog);
 
-//router.put("/:id", checkToken, updatedUser);
-
 blogRouter.delete("/:id", deleteBlog);
-
-//router.delete("/", checkToken, deleteAllUsers);
 
 export default blogRouter;
