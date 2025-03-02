@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import Header from "../components/header";
 
 const Login = () => {
   const auth = useAuth(); // Get login function without wrapping everything
@@ -18,9 +17,12 @@ const Login = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const response = await axios.post("/api/login", data);
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        data
+      );
       auth.login(response.data.user);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.error(
         "Login failed:",
@@ -33,11 +35,10 @@ const Login = () => {
 
   return (
     <>
-      <Header />
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <div className="bg-white p-8 rounded-xl shadow-lg w-96">
           <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
-            Welcome To <span className="">Tech</span>Tunes
+            Welcome To <span className="text-orange-500">Tech</span>Tunes
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -48,7 +49,7 @@ const Login = () => {
                 type="email"
                 placeholder="Enter your email"
                 {...register("email", { required: "Email is required" })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">
@@ -66,7 +67,7 @@ const Login = () => {
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", { required: "Password is required" })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
               {errors.password && (
                 <p className="text-red-500 text-xs mt-1">
@@ -78,7 +79,7 @@ const Login = () => {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-full bg-[#F2761E] hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300"
               disabled={loading}
             >
               {loading ? "Logging In..." : "Login"}
@@ -91,7 +92,7 @@ const Login = () => {
               Don't have an account?{" "}
               <Link
                 to="/register"
-                className="text-blue-600 font-medium hover:underline"
+                className="text-orange-500 font-medium hover:underline"
               >
                 Sign up here
               </Link>

@@ -1,16 +1,13 @@
-import React from "react";
-import Header from "../components/header";
-import HomeBody from "../components/homeBody";
-import Categories from "../components/categories";
+import HomeBody from "../components/HomeBody";
+import Categories from "../components/Categories";
 
-function home() {
+function Home() {
   return (
     <div>
-      <Header />
       <HomeBody />
       <Categories />
     </div>
   );
 }
 
-export default home;
+export default Home;

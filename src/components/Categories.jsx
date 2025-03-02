@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import CategoryCard from "./CategoryCard";
 
@@ -14,8 +14,8 @@ const Categories = () => {
 
   return (
     <div className="container mx-auto px-6 py-10">
-      <h1 className="text-3xl font-heading font-bold text-center text-gray-900 mb-6">
-        Explore Tech Blog Categories
+      <h1 className="text-3xl font-heading font-bold text-center text-gray-900 mb-6 mt-12">
+        Explore Tech Writings by Masterminds
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => (
