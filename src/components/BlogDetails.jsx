@@ -46,7 +46,7 @@ const BlogDetails = () => {
       <div className="mt-6 flex space-x-4">
         <button
           onClick={() => navigate(`/edit-blog/${id}`)}
-          className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
         >
           Edit
         </button>
