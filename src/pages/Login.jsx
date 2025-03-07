@@ -21,8 +21,8 @@ const Login = () => {
         "http://localhost:5000/user/login",
         data
       );
-      auth.login(response?.data?.user);
-      navigate("/", { replace: true });
+      auth.login(response.data.user);
+      navigate("/");
     } catch (error) {
       console.error(
         "Login failed:",

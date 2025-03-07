@@ -21,7 +21,7 @@ const Register = () => {
         "http://localhost:5000/user/signup",
         data
       );
-      auth.login(response?.data?.user);
+      auth.login(response.data.user);
       navigate("/");
     } catch (error) {
       console.error(
