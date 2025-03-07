@@ -9,6 +9,7 @@ import UpdateBlog from "./components/UpdateBlog";
 import Header from "./components/Header";
 import CreateBlog from "./pages/CreateBlog";
 import Home from "./pages/home";
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   return (
@@ -21,8 +22,23 @@ function App() {
         <Route path="aboutUs" element={<AboutUs />} />
         <Route path="blogs/:id" element={<BlogDetails />} />
         <Route path="blogs/category/:category" element={<BlogsByCategory />} />
-        <Route path="create" element={<CreateBlog />} />
-        <Route path="edit-blog/:id" element={<UpdateBlog />} />
+        <Route
+          path="create"
+          element={
+            <PrivateRoute>
+              {" "}
+              <CreateBlog />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="edit-blog/:id"
+          element={
+            <PrivateRoute>
+              <UpdateBlog />{" "}
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );
