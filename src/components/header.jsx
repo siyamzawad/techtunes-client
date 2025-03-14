@@ -4,7 +4,7 @@ import useAuth from "../context/useAuth";
 
 function Header() {
   const { user, logout } = useAuth();
-  console.log("user from header", user);
+  // console.log("user from header", user);
   const navigate = useNavigate();
   const handleLogout = () => {
     logout();
