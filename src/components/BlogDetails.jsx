@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -29,8 +30,10 @@ const BlogDetails = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      toast.success("Blog deleted successfully");
       navigate(-1);
     } catch (error) {
+      toast.error("Failed to delete blog");
       console.error("Error deleting blog:", error);
     }
   };
@@ -40,6 +43,7 @@ const BlogDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
+      <Toaster />
       <h1 className="text-3xl font-bold text-gray-800">{blog.title}</h1>
       <p className="text-gray-500 mt-2">
         By {blog.author} | ❤️ {blog.likes} Likes

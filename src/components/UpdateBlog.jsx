@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateBlog = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const UpdateBlog = () => {
       .then((response) => {
         setTitle(response.data.title);
         setBody(response.data.body);
-        setCategory(response.data.category?._id || ""); // Handle missing category
+        setCategory(response.data.category?._id || "");
         setLoading(false);
       })
       .catch(() => {
@@ -52,8 +53,11 @@ const UpdateBlog = () => {
           },
         }
       );
+      toast.success("Blog updated successfully");
+
       navigate(`/blogs/${id}`); // Redirect to blog details page
     } catch (error) {
+      toast.error("failed to update blog");
       console.error("Error updating blog:", error);
     }
   };
@@ -63,6 +67,7 @@ const UpdateBlog = () => {
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
+      <Toaster />
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Update Blog</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
