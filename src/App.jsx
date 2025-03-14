@@ -26,8 +26,7 @@ function App() {
           path="create"
           element={
             <PrivateRoute>
-              {" "}
-              <CreateBlog />
+              <CreateBlog />{" "}
             </PrivateRoute>
           }
         />

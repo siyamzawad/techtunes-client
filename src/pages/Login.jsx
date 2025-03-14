@@ -21,7 +21,8 @@ const Login = () => {
         "http://localhost:5000/user/login",
         data
       );
-      auth.login(response.data.user);
+      auth.login(response.data);
+      console.log(response.data);
       navigate("/");
     } catch (error) {
       console.error(
