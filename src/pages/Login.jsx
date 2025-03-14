@@ -22,7 +22,6 @@ const Login = () => {
         data
       );
       auth.login(response.data);
-      console.log(response.data);
       navigate("/");
     } catch (error) {
       console.error(
@@ -43,7 +42,6 @@ const Login = () => {
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Email Input */}
             <div>
               <label className="block text-gray-700 font-medium">Email</label>
               <input
@@ -59,7 +57,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Password Input */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Password
@@ -77,7 +74,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Login Button */}
             <button
               type="submit"
               className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300"
@@ -90,7 +86,7 @@ const Login = () => {
           {/* Navigation to Register */}
           <div className="text-center mt-4">
             <p className="text-gray-600">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
               <Link
                 to="/register"
                 className="text-orange-500 font-medium hover:underline"

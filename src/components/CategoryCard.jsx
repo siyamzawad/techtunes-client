@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-
+import PropTypes from "prop-types";
 const CategoryCard = ({ category }) => {
   const navigate = useNavigate();
-  console.log(category);
   const handleClick = () => {
     navigate(`/blogs/category/${category._id}`);
   };
@@ -26,3 +25,6 @@ const CategoryCard = ({ category }) => {
 };
 
 export default CategoryCard;
+CategoryCard.propTypes = {
+  category: PropTypes.node.isRequired,
+};
