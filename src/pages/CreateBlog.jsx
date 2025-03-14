@@ -21,11 +21,6 @@ function CreateBlog() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !content || !category) {
-      toast.error("All fields are required!");
-      return;
-    }
-
     try {
       setLoading(true);
       await axios.post(
