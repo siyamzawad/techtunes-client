@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useAuth from "../context/useAuth";
 
 function CreateBlog() {
   const [title, setTitle] = useState("");
@@ -10,7 +11,7 @@ function CreateBlog() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-
+  const { user } = useAuth();
   useEffect(() => {
     axios
       .get("http://localhost:5000/categories")
@@ -27,12 +28,20 @@ function CreateBlog() {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:5000/blogs", {
-        title,
-        body: content,
-        category,
-        author: "bob", // Replace with user?.username when authentication is added
-      });
+      await axios.post(
+        "http://localhost:5000/blogs",
+        {
+          title,
+          body: content,
+          category,
+          author: user.username,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       toast.success("Post Created Successfully");
 

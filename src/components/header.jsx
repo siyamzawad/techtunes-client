@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import logo from "../assets/logo.jpg";
+import useAuth from "../context/useAuth";
 
 function Header() {
   const { user, logout } = useAuth();

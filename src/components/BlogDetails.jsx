@@ -25,8 +25,12 @@ const BlogDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/blogs/${id}`);
-      navigate(-1); // Navigate back after delete
+      await axios.delete(`http://localhost:5000/blogs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      navigate(-1);
     } catch (error) {
       console.error("Error deleting blog:", error);
     }

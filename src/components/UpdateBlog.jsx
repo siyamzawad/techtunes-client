@@ -12,7 +12,6 @@ const UpdateBlog = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch blog details
   useEffect(() => {
     axios
       .get(`http://localhost:5000/blogs/${id}`)
@@ -40,11 +39,19 @@ const UpdateBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/blogs/${id}`, {
-        title,
-        body,
-        category,
-      });
+      await axios.put(
+        `http://localhost:5000/blogs/${id}`,
+        {
+          title,
+          body,
+          category,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       navigate(`/blogs/${id}`); // Redirect to blog details page
     } catch (error) {
       console.error("Error updating blog:", error);

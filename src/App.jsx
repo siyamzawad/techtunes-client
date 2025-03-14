@@ -8,7 +8,7 @@ import BlogDetails from "./components/BlogDetails";
 import UpdateBlog from "./components/UpdateBlog";
 import Header from "./components/Header";
 import CreateBlog from "./pages/CreateBlog";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
